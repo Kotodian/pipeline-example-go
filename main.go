@@ -2,15 +2,16 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"log"
+	"net/http"
 )
 
 const webContent = "Hello World!"
 
 func main() {
 	http.HandleFunc("/", helloHandler)
-	log.Fatal(http.ListenAndServe(":80", nil))
+	http.HandleFunc("/hello", helloHandler)
+	log.Fatal(http.ListenAndServe(":9091", nil))
 }
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
