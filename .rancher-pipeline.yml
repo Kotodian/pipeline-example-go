@@ -9,6 +9,10 @@ stages:
         cd /go/src/github.com/rancher/pipeline-example-go
         go build -o bin/hello-server
         go test -cover
+  when:
+    event:
+      include:
+        - tag
 - name: Deploy
   steps:
     - applyYamlConfig:
